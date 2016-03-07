@@ -1,5 +1,6 @@
 #include "player.h"
 #include <iostream>
+using namespace std;
 
 /*
  * Constructor for the player; initialize everything here. The side your AI is

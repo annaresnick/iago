@@ -19,6 +19,7 @@ Player::Player(Side side) {
      * 30 seconds.
      */
      Board *newBoard = new Board();
+     Side maaaahside = side;
 }
 
 /*
@@ -44,5 +45,10 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
      * TODO: Implement how moves your AI should play here. You should first
      * process the opponent's opponents move before calculating your own move
      */ 
+     
+    // Modifies board: Board::doMove(Move *m, Side side)
+    if (Board::hasMoves(side) == true)
+    {
+	}
     return NULL;
 }

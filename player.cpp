@@ -71,16 +71,6 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
      * process the opponent's opponents move before calculating your own move
      */ 
     
-    //int flipped = 0;
-    
-     ////to flip discs to left
-     //for (int k = pos; k < otherside; k++)
-     //{
-		 //board[row][k] = pos;
-		 //flipped++;
-	 //}
-     
-    // Modifies board: Board::doMove(Move *m, Side side)
     int maxscore = -30;
     Move * move1 = new Move(0, 0);
     newBoard->doMove(opponentsMove, otherside);
@@ -94,12 +84,10 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
 				
 				if (newBoard->checkMove(move2, myside))
 				{
-					//Move * m= new Move(i, j);
 					if (scoreboard[i][j] > maxscore)
 					{
 						maxscore = scoreboard[i][j];
 						Move * m = new Move(i, j);
-						//move1(i, j);
 						move1 = m;
 					}
 					

@@ -17,6 +17,7 @@ Player::Player(Side side) {
      * precalculating things, etc.) However, remember that you will only have
      * 30 seconds.
      */
+     Board *newBoard = new Board();
 }
 
 /*

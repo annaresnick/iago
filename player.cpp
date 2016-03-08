@@ -3,6 +3,20 @@
 //i love code
 using namespace std;
 
+static int scoreboard[8][8] = 
+{
+{10, -3, 5, 5, 5, 5, -3, 10}, 
+{-3, -5, 4, 4, 4, 4, -5, -3}, 
+{5, 4, 4, 4, 4, 4, 4, 5},
+{5, 4, 4, 4, 4, 4, 4, 5}, 
+{5, 4, 4, 4, 4, 4, 4, 5},
+{5, 4, 4, 4, 4, 4, 4, 5},
+{-3, -5, 4, 4, 4, 4, -5, -3},
+{10, -3, 5, 5, 5, 5, -3, 10}
+};
+
+
+
 //heyo
 /*
  * Constructor for the player; initialize everything here. The side your AI is
@@ -48,6 +62,7 @@ Player::~Player() {
  * The move returned must be legal; if there are no valid moves for your side,
  * return NULL.
  */
+
 Move *Player::doMove(Move *opponentsMove, int msLeft) {
     /* 
      * TODO: Implement how moves your AI should play here. You should first
@@ -64,6 +79,8 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
 	 //}
      
     // Modifies board: Board::doMove(Move *m, Side side)
+    int maxscore = -30;
+    Move * move1 = new Move(0, 0);
     newBoard->doMove(opponentsMove, otherside);
     if (newBoard->hasMoves(myside))
     {
@@ -71,15 +88,24 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
 		{
 			for (int j = 0; j < 8; j++)
 			{
-				Move move(i, j);
-				if (newBoard->checkMove(&move, myside))
+				Move * move2 = new Move(i, j);
+				
+				if (newBoard->checkMove(move2, myside))
 				{
-					Move * m= new Move(i, j);
-					newBoard->doMove(m, myside); 
-					return m;
+					//Move * m= new Move(i, j);
+					if (scoreboard[i][j] > maxscore)
+					{
+						maxscore = scoreboard[i][j];
+						Move * m = new Move(i, j);
+						//move1(i, j);
+						move1 = m;
+					}
+					
 				}
 			}
 		}
+		newBoard->doMove(move1, myside); 
+		return move1;
 	}
     return NULL;
 }

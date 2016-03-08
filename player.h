@@ -15,6 +15,7 @@ public:
     Move *doMove(Move *opponentsMove, int msLeft);
     Side myside;
     Side otherside;
+    Board * newBoard;
 
     // Flag to tell if the player is running within the test_minimax context
     bool testingMinimax;

@@ -19,7 +19,8 @@ Player::Player(Side side) {
      * 30 seconds.
      */
      Board *newBoard = new Board();
-     Side maaaahside = side;
+     Side myside = side;
+     Side otherside = /////////////REMEMBER TO INITIALIZE VAR
 }
 
 /*
@@ -45,10 +46,31 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
      * TODO: Implement how moves your AI should play here. You should first
      * process the opponent's opponents move before calculating your own move
      */ 
+    
+    int flipped = 0;
+    
+     //to flip discs to left
+     for (int k = pos; k < otherside; k++)
+     {
+		 board[row][k] = pos;
+		 flipped++;
+	 }
      
     // Modifies board: Board::doMove(Move *m, Side side)
     if (Board::hasMoves(side) == true)
     {
+		for (int i = 0; i < row.size(); i++)
+		{
+			for (int j = 0; j < col.size(); j++)
+			{
+				if (Board::checkMove(*m, side) == true)
+				{
+					std::vector(moves * ) = ;
+					moves.push_back(Move move(i, j)); 
+				}
+			}
+		}
+		doMove();
 	}
     return NULL;
 }

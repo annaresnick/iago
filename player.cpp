@@ -9,6 +9,8 @@ using namespace std;
  * on (BLACK or WHITE) is passed in as "side". The constructor must finish 
  * within 30 seconds.
  */
+int scores[8][8];
+
 Player::Player(Side side) {
     // Will be set to true in test_minimax.cpp.
     testingMinimax = false;

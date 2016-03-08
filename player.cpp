@@ -18,9 +18,16 @@ Player::Player(Side side) {
      * precalculating things, etc.) However, remember that you will only have
      * 30 seconds.
      */
-     Board *newBoard = new Board();
      Side myside = side;
-     Side otherside = /////////////REMEMBER TO INITIALIZE VAR
+     Side otherside;
+     if (side == WHITE)
+     {
+		 otherside = BLACK;
+	 }
+	 else
+	 {
+		 otherside = WHITE;
+	 }
 }
 
 /*
@@ -47,30 +54,31 @@ Move *Player::doMove(Move *opponentsMove, int msLeft) {
      * process the opponent's opponents move before calculating your own move
      */ 
     
-    int flipped = 0;
+    //int flipped = 0;
     
-     //to flip discs to left
-     for (int k = pos; k < otherside; k++)
-     {
-		 board[row][k] = pos;
-		 flipped++;
-	 }
+     ////to flip discs to left
+     //for (int k = pos; k < otherside; k++)
+     //{
+		 //board[row][k] = pos;
+		 //flipped++;
+	 //}
      
     // Modifies board: Board::doMove(Move *m, Side side)
-    if (Board::hasMoves(side) == true)
+    newBoard->doMove(opponentsMove, otherside);
+    if (newBoard->hasMoves(side))
     {
 		for (int i = 0; i < row.size(); i++)
 		{
 			for (int j = 0; j < col.size(); j++)
 			{
-				if (Board::checkMove(*m, side) == true)
+				Move move(i, j);
+				if (newBoard->checkMove(&move, side))
 				{
-					std::vector(moves * ) = ;
-					moves.push_back(Move move(i, j)); 
+					newBoard->doMove(&move, myside); 
+					return &move;
 				}
 			}
 		}
-		doMove();
 	}
     return NULL;
 }
